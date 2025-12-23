@@ -1,65 +1,98 @@
-import Image from "next/image";
+// "use client"
+import React from "react";
+import Beams from "@/components/ui/beams";
+import TextPressure from "@/components/TextPressure";
+import { Target } from "lucide-react";
+import BlurText from "@/components/BlurText";
+import GradientText from "@/components/GradientText";
+import ScrollFloat from "@/components/ScrollFloat";
+import ASCIIText from "@/components/ASCIIText";
+import VariableProximity from "@/components/VariableProximity";
+import TextType from "@/components/TextType";
+import ScrambledText from "@/components/ScrambledText";
+import Antigravity from "@/components/Antigravity";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
-export default function Home() {
+const page = () => {
+  // const containerRef = useRef(null);
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div>
+      <div
+        style={{ position: "relative", height: "100vh", paddingTop: "5rem" }}
+      >
+        <TextPressure
+          text="Hello!"
+          flex={true}
+          alpha={false}
+          stroke={false}
+          width={true}
+          weight={true}
+          italic={true}
+          textColor="#ffffff"
+          strokeColor="#ff0000"
+          minFontSize={36}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+      </div>
+      <div className="flex flex-col justify-center items-center">
+        <div>
+          <TextType
+            className="text-7xl  font-bold text-gray-300 "
+            text={[
+              "Welcome to my PortFolio",
+              "I'm Dino Raj !!",
+              "Full Stack Developer & Coding Enthusiast",
+            ]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="text-white mt-16 max-w-6xl px-4 text-center">
+          <div
+            style={{ position: "relative", width: "100%", minHeight: "262px" }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 20,
+                pointerEvents: "none",
+              }}
+            >
+              <div style={{ width: "100%", height: "100%" }}>
+                <Antigravity
+                  count={300}
+                  magnetRadius={6}
+                  ringRadius={7}
+                  waveSpeed={0.4}
+                  waveAmplitude={1}
+                  particleSize={1.5}
+                  lerpSpeed={0.05}
+                  color={"#FFFFFF"}
+                  autoAnimate={true}
+                  particleVariance={1}
+                />
+              </div>
+            </div>
+            <div
+              style={{ position: "relative", zIndex: 10, paddingTop: "1rem" }}
+            >
+              <p>
+                With 3+ years of experience, I have developed and deployed over
+                10+ projects, including client work at Unibluweb. I am
+                passionate about coding and I'm always curious to learn and
+                grow. With a focus on Full Stack Development, I specialize in
+                creating dynamic and interactive web applications. With strong
+                foundations in Computer Science and Engineering, I bring a
+                problem-solving mindset to every project I undertake.
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
     </div>
   );
-}
+};
+
+export default page;
