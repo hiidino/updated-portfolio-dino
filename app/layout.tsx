@@ -15,20 +15,22 @@ import {
 } from "@tabler/icons-react";
 import Beams from "@/components/ui/beams";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import Antigravity from "@/components/Antigravity";
+import Navbar from "@/components/Navbar"
+import CustomCursor from "@/components/CustomCursor";
+
 
 const links = [
   {
     title: "Home",
     icon: (
-      <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconHome className="h-full w-full text-white/80" />
     ),
     href: "/",
   },
   {
     title: "Instagram",
     icon: (
-      <IconBrandInstagram className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconBrandInstagram className="h-full w-full text-white/80" />
     ),
     Target: "_blank",
     href: "https://www.instagram.com/hii.dino/",
@@ -36,7 +38,7 @@ const links = [
   {
     title: "Leetcode",
     icon: (
-      <IconBrandLeetcode className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconBrandLeetcode className="h-full w-full text-white/80" />
     ),
     Target: "_blank",
     href: "https://leetcode.com/u/hiidino/",
@@ -44,7 +46,7 @@ const links = [
   {
     title: "LinkedIn",
     icon: (
-      <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconBrandLinkedin className="h-full w-full text-white/80" />
     ),
     Target: "_blank",
     href: "https://www.linkedin.com/in/hiidino/",
@@ -52,7 +54,7 @@ const links = [
   {
     title: "GitHub",
     icon: (
-      <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      <IconBrandGithub className="h-full w-full text-white/80" />
     ),
     Target: "_blank",
     href: "https://www.github.com/hiidino",
@@ -89,7 +91,7 @@ export default function RootLayout({
           <Beams
             beamWidth={2}
             beamHeight={15}
-            beamNumber={12}
+            beamNumber={6}
             lightColor="#ffffff"
             speed={2}
             noiseIntensity={1.75}
@@ -97,6 +99,8 @@ export default function RootLayout({
             rotation={0}
           />
         </div>
+        <CustomCursor />
+        <Navbar />
         {children}
         <div className="fixed bottom-4 right-4 md:bottom-8 md:left-0 md:right-0 md:flex md:items-center md:justify-center z-50">
           <FloatingDock items={links} />

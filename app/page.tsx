@@ -1,21 +1,19 @@
-// "use client";
+"use client";
 import React from "react";
-import Beams from "@/components/ui/beams";
-import TextPressure from "@/components/TextPressure";
-import { Target } from "lucide-react";
-import BlurText from "@/components/BlurText";
-import GradientText from "@/components/GradientText";
-import ScrollFloat from "@/components/ScrollFloat";
-import ASCIIText from "@/components/ASCIIText";
-import VariableProximity from "@/components/VariableProximity";
-import TextType from "@/components/TextType";
-import ScrambledText from "@/components/ScrambledText";
-import Antigravity from "@/components/Antigravity";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Timeline } from "@/components/ui/timeline";
-import CircularGallery from "@/components/CircularGallery";
-import DomeGallery from "@/components/DomeGallery";
+
+// Heavy WebGL / Three.js / animation components — loaded client-side only,
+// each in its own JS chunk so the initial page parse stays lean.
+const TextPressure   = dynamic(() => import("@/components/TextPressure"),   { ssr: false });
+const BinaryReveal   = dynamic(() => import("@/components/BinaryReveal"),   { ssr: false });
+const Antigravity    = dynamic(() => import("@/components/Antigravity"),    { ssr: false });
+const SplitReveal    = dynamic(() => import("@/components/SplitReveal"),    { ssr: false });
+const ServicesSection = dynamic(() => import("@/components/ServicesSection"), { ssr: false });
+const AboutSection    = dynamic(() => import("@/components/AboutSection"),    { ssr: false });
+const ProjectsCTA     = dynamic(() => import("@/components/ProjectsCTA"),     { ssr: false });
+const DomeGallery    = dynamic(() => import("@/components/DomeGallery"),    { ssr: false });
 
 const page = () => {
   // const containerRef = useRef(null);
@@ -50,15 +48,15 @@ const page = () => {
       title: "2022 & 23",
       content: (
         <div>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Joined I.K. Gujral Punjab Technical University as an undergraduate
             in Bachelor's of technology in Computer Science.
           </p>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Became a Certified Amazon Web Services Cloud Practitioner{" "}
             {"(Cloud Foundations, Cloud Operations & Data Engineering)."}
           </p>
-          <p className="mb-8 text-xs max-w-full font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-8 text-xs max-w-full font-normal text-neutral-800 md:text-sm">
             - Completed a MERN + DevOps Cohort from 100xdevs, contributing to
             real world projects on cohort's private repositories.
           </p>
@@ -99,23 +97,23 @@ const page = () => {
       title: "Early 2024",
       content: (
         <div>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Joined TCIL-IT, Chandigarh as a Full Stack Developer Intern{" "}
             {"(05/2024 - 07/2024)"}
           </p>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Worked on a blogging web application using Node.js and Express.js,
             enabling real-time post creation, updates, and interactions.
           </p>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Contributed to building schemas and developing features using the
             MERN stack.
           </p>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Developed user interfaces using React.js, ensuring a responsive
             frontend experience for the messaging platform.
           </p>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm">
             - Implemented necessary rate limiters and load balancers to ensure
             scalability and performance.
           </p>
@@ -142,23 +140,23 @@ const page = () => {
       title: "Late 2024",
       content: (
         <div>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Joined UnibluWeb as a Full Stack Engineer {"(06/2024 - 12/2024)"}
           </p>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Led end-to-end product development, defining technical strategies
             for scalable web applications.
           </p>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Designed, developed, and deployed MERN stack-based projects,
             including DKS Security’s website, enhancing client engagement and
             business operations.
           </p>
-          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Directed a cross-functional team of developers, designers, and
             marketers, ensuring 100% on-time project delivery.
           </p>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm">
             - Utilized Google Ads, Google Analytics, Google Marketing Platform,
             and SEO strategies to optimize campaigns, track performance, and
             improve website visibility and conversion rates during my time at
@@ -181,37 +179,45 @@ const page = () => {
   return (
     <div>
       <div
-        style={{ position: "relative", height: "100vh", paddingTop: "5rem" }}
+        id="hero"
+        className="relative flex items-center justify-center"
+        style={{ height: "100svh", paddingTop: "3.5rem", paddingBottom: "3.5rem" }}
       >
-        <TextPressure
-          text="Hello!"
-          flex={true}
-          alpha={false}
-          stroke={false}
-          width={true}
-          weight={true}
-          italic={true}
-          textColor="#ffffff"
-          strokeColor="#ff0000"
-          minFontSize={36}
-        />
-      </div>
-      <div className="flex flex-col justify-center items-center">
-        <div>
-          <TextType
-            className="text-7xl  font-bold text-gray-300 "
-            text={[
-              // "Welcome to my PortFolio",
-              "I'm Dino Raj !!",
-              "Full Stack Developer & Coding Enthusiast",
-            ]}
-            typingSpeed={75}
-            pauseDuration={1500}
-            showCursor={true}
-            cursorCharacter="|"
+        <div className="relative z-0 w-full h-[40vh]">
+          <TextPressure
+            text="Hello!"
+            flex={true}
+            alpha={false}
+            stroke={false}
+            width={true}
+            weight={true}
+            italic={true}
+            textColor="#ffffff"
+            strokeColor="#ff0000"
+            minFontSize={36}
           />
         </div>
-        <div className="text-white mt-16 max-w-6xl px-4 text-center">
+        <div className="absolute bottom-10 z-10 flex md:hidden flex-col items-center gap-3 text-white/60">
+          <p className="text-sm tracking-[0.25em] uppercase">Scroll to explore</p>
+          <div className="animate-bounce">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div id="about-content" className="flex flex-col justify-center items-center w-full">
+        <div className="w-full max-w-5xl px-4 text-center overflow-hidden">
+          <BinaryReveal
+            phrases={["I'm Dino Raj !!", "Software Engineer & Full Stack Developer"]}
+            className="font-bold text-[clamp(1rem,3vw,2.75rem)]"
+            charDelay={45}
+            frameSpeed={55}
+            resolveFrames={7}
+            holdDuration={2600}
+          />
+        </div>
+        <div className="text-white mt-8 md:mt-16 max-w-6xl w-full px-4 sm:px-8 text-center text-sm sm:text-base">
           <div
             style={{ position: "relative", width: "100%", minHeight: "262px" }}
           >
@@ -225,7 +231,7 @@ const page = () => {
             >
               <div style={{ width: "100%", height: "100%" }}>
                 <Antigravity
-                  count={300}
+                  count={80}
                   magnetRadius={6}
                   ringRadius={7}
                   waveSpeed={0.4}
@@ -241,24 +247,29 @@ const page = () => {
             <div
               style={{ position: "relative", zIndex: 10, paddingTop: "1rem" }}
             >
-              <p>
-                With 3+ years of experience, I have developed and deployed over
-                10+ projects, including client work at Unibluweb. I am
-                passionate about coding and I'm always curious to learn and
-                grow. With a focus on Full Stack Development, I specialize in
-                creating dynamic and interactive web applications. With strong
-                foundations in Computer Science and Engineering, I bring a
-                problem-solving mindset to every project I undertake.
+              <p className="font-sans text-white/80 leading-relaxed tracking-wide">
+                Full Stack Developer with 2+ years of hands-on experience
+                designing, building, and shipping production-grade web
+                applications. I have delivered 10+ projects end-to-end —
+                spanning client engagements, SaaS products, and open-source
+                work — with a consistent focus on performance, scalability, and
+                clean architecture. Grounded in Computer Science fundamentals
+                and driven by a genuine passion for engineering, I thrive in
+                fast-moving environments where ownership and impact matter.
               </p>
             </div>
             <br />
-            <Button className="border-2 border-stone-50 p-5 cursor-pointer">
-              Let's Connect ?{" "}
-            </Button>
+            <a
+              href="mailto:raj245098@gmail.com"
+              style={{ position: "relative", zIndex: 30 }}
+              className="inline-block border-2 border-stone-50 px-5 py-2.5 text-sm font-semibold text-white rounded-lg hover:bg-white/10 transition-all duration-200"
+            >
+              Let's Connect →
+            </a>
           </div>
         </div>
       </div>
-      <div className="relative w-full overflow-clip">
+      <div id="journey" className="relative w-full overflow-clip">
         <Timeline data={data} />
       </div>
       {/* <BlurText
@@ -269,29 +280,18 @@ const page = () => {
         // onAnimationComplete={handleAnimationComplete}
         className="flex justify-center items-center mt-15 text-white text-7xl font-bold mb-8"
       /> */}
-      <div className="text-white mt-15 flex justify-center items-center font-bold">
-        <ScrollFloat
-          animationDuration={1}
-          ease="back.inOut(2)"
-          scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=40%"
-          stagger={0.03}
+      <div id="services" className="text-white mt-15 flex justify-center items-center font-bold px-4 text-center">
+        <SplitReveal
+          className="text-[clamp(1.6rem,4vw,3rem)] leading-tight tracking-widest uppercase"
+          delay={0.1}
+          stagger={0.08}
         >
-          PROFESSIONAL OFFERINGS 
-        </ScrollFloat>
+          PROFESSIONAL OFFERINGS
+        </SplitReveal>
       </div>
-      <div style={{ height: "600px", position: "relative" }}>
-        <CircularGallery
-          bend={2}
-          textColor="#ffffff"
-          borderRadius={0.05}
-          scrollEase={0.02}
-        />
-      </div>
-      <div style={{ width: "100vw", height: "100vh" }}>
-        <center><h1 className="text-white text-6xl font-bold mb-15 mt-15">Skills & Technologies</h1></center>
-        <DomeGallery />
-      </div>
+      <ServicesSection />
+      <AboutSection />
+      <ProjectsCTA />
     </div>
   );
 };
