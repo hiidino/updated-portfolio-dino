@@ -17,6 +17,7 @@ interface TextPressureProps {
   strokeWidth?: number;
   className?: string;
   minFontSize?: number;
+  maxFontSize?: number;
 }
 
 const dist = (a: { x: number; y: number }, b: { x: number; y: number }) => {
@@ -55,7 +56,8 @@ const TextPressure: React.FC<TextPressureProps> = ({
   strokeColor = '#FF0000',
   strokeWidth = 2,
   className = '',
-  minFontSize = 24
+  minFontSize = 24,
+  maxFontSize = 220,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -104,7 +106,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     const { width: containerW, height: containerH } = containerRef.current.getBoundingClientRect();
 
     let newFontSize = containerW / (chars.length / 2);
-    newFontSize = Math.max(newFontSize, minFontSize);
+    newFontSize = Math.min(Math.max(newFontSize, minFontSize), maxFontSize);
 
     setFontSize(newFontSize);
     setScaleY(1);
@@ -150,8 +152,8 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
           const d = dist(mouseRef.current, charCenter);
 
-          const wdth = width ? Math.floor(getAttr(d, maxDist, 5, 200)) : 100;
-          const wght = weight ? Math.floor(getAttr(d, maxDist, 100, 900)) : 400;
+          const wdth = width ? Math.floor(getAttr(d, maxDist, 100, 200)) : 100;
+          const wght = weight ? Math.floor(getAttr(d, maxDist, 100, 600)) : 200;
           const italVal = italic ? getAttr(d, maxDist, 0, 1).toFixed(2) : '0';
           const alphaVal = alpha ? getAttr(d, maxDist, 0, 1).toFixed(2) : '1';
 
@@ -200,7 +202,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
   }, [fontFamily, fontUrl, stroke, textColor, strokeColor, strokeWidth]);
 
   return (
-    <div ref={containerRef} className="relative w-full h-full overflow-hidden bg-transparent">
+    <div ref={containerRef} className="relative w-full h-full overflow-visible bg-transparent">
       {styleElement}
       <h1
         ref={titleRef}
