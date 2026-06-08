@@ -131,6 +131,25 @@
   * { cursor: none !important; }
 }
 
+/* Performance: GPU-hint fixed background */
+.fixed { will-change: transform; }
+
+/* Reduce expensive backdrop-blur on mobile */
+@media (max-width: 767px) {
+  .backdrop-blur-xl { backdrop-filter: blur(8px) !important; }
+  .backdrop-blur-md { backdrop-filter: blur(6px) !important; }
+  .backdrop-blur-sm { backdrop-filter: none !important; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
