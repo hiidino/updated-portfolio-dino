@@ -112,8 +112,8 @@ export default function ServicesSection() {
     if (!el) return;
     // One observer for the whole section instead of 12 individual ones
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.05, rootMargin: "0px 0px -60px 0px" }
+      ([entry]) => { setVisible(entry.isIntersecting); },
+      { threshold: 0.05 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -133,7 +133,7 @@ export default function ServicesSection() {
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",
-                transition: `opacity 0.5s ease ${i * 50}ms, transform 0.5s ease ${i * 50}ms`,
+                transition: `opacity 0.7s ease ${i * 100}ms, transform 0.7s ease ${i * 100}ms`,
               }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`} />
