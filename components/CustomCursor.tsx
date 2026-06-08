@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
+  // Skip on touch devices — no pointer to track
+  if (typeof window !== "undefined" && navigator.maxTouchPoints > 0) return null;
   const dotRef   = useRef<HTMLDivElement>(null);
   const shapeRef = useRef<HTMLDivElement>(null);
 

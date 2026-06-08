@@ -66,28 +66,28 @@ const page = () => {
               alt="100xdevs certificate"
               width={500}
               height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
               src="/images/dino-aws-co.png"
               alt="aws certificate 1"
               width={500}
               height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
               src="/images/dino-aws-cf.png"
               alt="aws certificate 2"
               width={500}
               height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
               src="/images/dino-aws-de.png"
               alt="aws certificate 3"
               width={500}
               height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
           </div>
         </div>
@@ -123,14 +123,14 @@ const page = () => {
               alt="hero template"
               width={500}
               height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
               src="https://assets.aceternity.com/pro/bento-grids.png"
               alt="bento template"
               width={500}
               height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
           </div>
         </div>
@@ -169,7 +169,7 @@ const page = () => {
               alt="uniblu certificate"
               width={500}
               height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
           </div>
         </div>
@@ -211,23 +211,16 @@ const page = () => {
               holdDuration={2600}
             />
           </div>
-          <div className="text-white mt-6 w-full max-w-xl text-sm relative" style={{ minHeight: "200px" }}>
-            <div style={{ position: "absolute", inset: 0, zIndex: 20, pointerEvents: "none" }}>
-              <div style={{ width: "100%", height: "100%" }}>
-                <Antigravity count={60} magnetRadius={6} ringRadius={7} waveSpeed={0.4} waveAmplitude={1} particleSize={1.5} lerpSpeed={0.05} color={"#FFFFFF"} autoAnimate={true} particleVariance={1} />
-              </div>
-            </div>
-            <div style={{ position: "relative", zIndex: 10, paddingTop: "0.5rem" }}>
-              <p className="font-sans text-white/80 leading-relaxed tracking-wide text-sm">
-                Full Stack Developer with 2+ years of hands-on experience
-                designing, building, and shipping production-grade web
-                applications. I have delivered 10+ projects end-to-end —
-                spanning client engagements, SaaS products, and open-source
-                work — with a consistent focus on performance, scalability, and
-                clean architecture.
-              </p>
-            </div>
-            <div className="mt-5" style={{ position: "relative", zIndex: 30 }}>
+          <div className="text-white mt-6 w-full max-w-xl text-sm">
+            <p className="font-sans text-white/80 leading-relaxed tracking-wide text-sm">
+              Full Stack Developer with 2+ years of hands-on experience
+              designing, building, and shipping production-grade web
+              applications. I have delivered 10+ projects end-to-end —
+              spanning client engagements, SaaS products, and open-source
+              work — with a consistent focus on performance, scalability, and
+              clean architecture.
+            </p>
+            <div className="mt-5">
               <a
                 href="mailto:raj245098@gmail.com"
                 className="inline-block border-2 border-stone-50 px-5 py-2.5 text-sm font-semibold text-white rounded-lg hover:bg-white/10 transition-all duration-200"
@@ -262,11 +255,9 @@ const page = () => {
           />
         </div>
         <div className="text-white mt-16 max-w-6xl w-full px-8 text-center text-base">
-          <div style={{ position: "relative", width: "100%", minHeight: "262px" }}>
+          <div style={{ position: "relative", width: "100%", minHeight: "220px" }}>
             <div style={{ position: "absolute", inset: 0, zIndex: 20, pointerEvents: "none" }}>
-              <div style={{ width: "100%", height: "100%" }}>
-                <Antigravity count={80} magnetRadius={6} ringRadius={7} waveSpeed={0.4} waveAmplitude={1} particleSize={1.5} lerpSpeed={0.05} color={"#FFFFFF"} autoAnimate={true} particleVariance={1} />
-              </div>
+              <Antigravity count={50} magnetRadius={6} ringRadius={7} waveSpeed={0.4} waveAmplitude={1} particleSize={1.5} lerpSpeed={0.05} color={"#FFFFFF"} autoAnimate={true} particleVariance={1} />
             </div>
             <div style={{ position: "relative", zIndex: 10, paddingTop: "1rem" }}>
               <p className="font-sans text-white/80 leading-relaxed tracking-wide">
