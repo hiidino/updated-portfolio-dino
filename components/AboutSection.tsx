@@ -39,7 +39,7 @@ export default function AboutSection() {
       id="about"
       className="w-full px-3 sm:px-6 lg:px-20 py-16 sm:py-24"
     >
-      <div className="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-5 sm:p-8 lg:p-14 shadow-2xl shadow-black/30 overflow-hidden">
+      <div className="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl pt-5 px-5 pb-8 sm:p-8 lg:p-14 shadow-2xl shadow-black/30 overflow-hidden">
 
         {/* ── Two-column on md+, single column on mobile ── */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-16 items-start md:items-center">
@@ -145,7 +145,7 @@ export default function AboutSection() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 pt-1">
+            <div className="flex flex-wrap gap-2 sm:gap-3 pt-1 pb-2 sm:pb-0">
               <a
                 href="mailto:raj245098@gmail.com"
                 className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-white/20 hover:border-white/30 transition-all duration-200"

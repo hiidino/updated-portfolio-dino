@@ -180,10 +180,11 @@ const page = () => {
     <div className="overflow-x-hidden w-full">
       <div
         id="hero"
-        className="relative flex items-center justify-center"
-        style={{ height: "100svh", paddingTop: "3.5rem", paddingBottom: "3.5rem" }}
+        className="relative flex flex-col items-center justify-center lg:flex-row lg:items-center lg:justify-center"
+        style={{ minHeight: "100svh", paddingTop: "4rem", paddingBottom: "3.5rem" }}
       >
-        <div className="relative z-0 w-full h-[40vh] overflow-hidden">
+        {/* HELLO text */}
+        <div className="relative z-0 w-full h-[22vh] lg:h-[40vh] overflow-hidden flex-shrink-0">
           <TextPressure
             text="Hello!"
             flex={true}
@@ -197,7 +198,48 @@ const page = () => {
             minFontSize={36}
           />
         </div>
-        <div className="absolute bottom-10 z-10 flex md:hidden flex-col items-center gap-3 text-white/60">
+
+        {/* Bio — shown INSIDE hero on mobile/iPad, hidden on desktop */}
+        <div id="about-content" className="flex flex-col justify-center items-center w-full lg:hidden px-4 sm:px-8 pt-6 pb-4 text-center">
+          <div className="w-full max-w-xl overflow-hidden">
+            <BinaryReveal
+              phrases={["I'm Dino Raj !!","Software Engineer","Full Stack Developer"]}
+              className="font-bold text-[clamp(1.1rem,4vw,2.75rem)]"
+              charDelay={45}
+              frameSpeed={55}
+              resolveFrames={7}
+              holdDuration={2600}
+            />
+          </div>
+          <div className="text-white mt-6 w-full max-w-xl text-sm relative" style={{ minHeight: "200px" }}>
+            <div style={{ position: "absolute", inset: 0, zIndex: 20, pointerEvents: "none" }}>
+              <div style={{ width: "100%", height: "100%" }}>
+                <Antigravity count={60} magnetRadius={6} ringRadius={7} waveSpeed={0.4} waveAmplitude={1} particleSize={1.5} lerpSpeed={0.05} color={"#FFFFFF"} autoAnimate={true} particleVariance={1} />
+              </div>
+            </div>
+            <div style={{ position: "relative", zIndex: 10, paddingTop: "0.5rem" }}>
+              <p className="font-sans text-white/80 leading-relaxed tracking-wide text-sm">
+                Full Stack Developer with 2+ years of hands-on experience
+                designing, building, and shipping production-grade web
+                applications. I have delivered 10+ projects end-to-end —
+                spanning client engagements, SaaS products, and open-source
+                work — with a consistent focus on performance, scalability, and
+                clean architecture.
+              </p>
+            </div>
+            <div className="mt-5" style={{ position: "relative", zIndex: 30 }}>
+              <a
+                href="mailto:raj245098@gmail.com"
+                className="inline-block border-2 border-stone-50 px-5 py-2.5 text-sm font-semibold text-white rounded-lg hover:bg-white/10 transition-all duration-200"
+              >
+                Let's Connect →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll to explore — always at bottom on mobile/iPad */}
+        <div className="flex lg:hidden flex-col items-center gap-3 text-white/60 pt-8 pb-2">
           <p className="text-sm tracking-[0.25em] uppercase">Scroll to explore</p>
           <div className="animate-bounce">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -206,7 +248,9 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div id="about-content" className="flex flex-col justify-center items-center w-full">
+
+      {/* Bio — shown BELOW hero on desktop only */}
+      <div className="hidden lg:flex flex-col justify-center items-center w-full">
         <div className="w-full max-w-5xl px-4 text-center overflow-hidden">
           <BinaryReveal
             phrases={["I'm Dino Raj !!","Software Engineer","Full Stack Developer"]}
@@ -217,36 +261,14 @@ const page = () => {
             holdDuration={2600}
           />
         </div>
-        <div className="text-white mt-8 md:mt-16 max-w-6xl w-full px-4 sm:px-8 text-center text-sm sm:text-base">
-          <div
-            style={{ position: "relative", width: "100%", minHeight: "262px" }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                zIndex: 20,
-                pointerEvents: "none",
-              }}
-            >
+        <div className="text-white mt-16 max-w-6xl w-full px-8 text-center text-base">
+          <div style={{ position: "relative", width: "100%", minHeight: "262px" }}>
+            <div style={{ position: "absolute", inset: 0, zIndex: 20, pointerEvents: "none" }}>
               <div style={{ width: "100%", height: "100%" }}>
-                <Antigravity
-                  count={80}
-                  magnetRadius={6}
-                  ringRadius={7}
-                  waveSpeed={0.4}
-                  waveAmplitude={1}
-                  particleSize={1.5}
-                  lerpSpeed={0.05}
-                  color={"#FFFFFF"}
-                  autoAnimate={true}
-                  particleVariance={1}
-                />
+                <Antigravity count={80} magnetRadius={6} ringRadius={7} waveSpeed={0.4} waveAmplitude={1} particleSize={1.5} lerpSpeed={0.05} color={"#FFFFFF"} autoAnimate={true} particleVariance={1} />
               </div>
             </div>
-            <div
-              style={{ position: "relative", zIndex: 10, paddingTop: "1rem" }}
-            >
+            <div style={{ position: "relative", zIndex: 10, paddingTop: "1rem" }}>
               <p className="font-sans text-white/80 leading-relaxed tracking-wide">
                 Full Stack Developer with 2+ years of hands-on experience
                 designing, building, and shipping production-grade web
