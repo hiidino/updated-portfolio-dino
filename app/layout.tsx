@@ -17,6 +17,7 @@ import Beams from "@/components/ui/beams";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import Navbar from "@/components/Navbar"
 import CustomCursor from "@/components/CustomCursor";
+import Loader from "@/components/Loader";
 
 
 const links = [
@@ -99,6 +100,7 @@ export default function RootLayout({
             rotation={0}
           />
         </div>
+        <Loader />
         <CustomCursor />
         <Navbar />
         {children}

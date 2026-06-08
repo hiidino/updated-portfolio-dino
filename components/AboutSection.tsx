@@ -27,7 +27,7 @@ export default function AboutSection() {
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.15 }
+      { threshold: 0.05 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -37,129 +37,132 @@ export default function AboutSection() {
     <section
       ref={ref}
       id="about"
-      className="w-full px-4 sm:px-8 lg:px-20 py-24"
+      className="w-full px-3 sm:px-6 lg:px-20 py-16 sm:py-24"
     >
-      <div className="max-w-6xl mx-auto rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-6 sm:p-10 lg:p-16 shadow-2xl shadow-black/30">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-5 sm:p-8 lg:p-14 shadow-2xl shadow-black/30 overflow-hidden">
 
-        {/* ── Photo ── */}
-        <motion.div
-          initial={{ opacity: 0, x: -48 }}
-          animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -48 }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="flex justify-center lg:justify-start"
-        >
-          <div className="relative">
-            {/* ambient glow */}
-            <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-white/10 via-white/5 to-transparent blur-xl" />
-            {/* photo frame */}
-            <div className="relative w-56 h-64 sm:w-72 sm:h-80 lg:w-80 lg:h-96 rounded-[1.75rem] overflow-hidden border border-white/10 shadow-2xl">
-              <Image
-                src="/images/dino-profile.jpg"
-                alt="Dino Raj"
-                fill
-                className="object-cover object-top"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-            </div>
-            {/* availability badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute -bottom-5 -right-4 flex items-center gap-2 rounded-2xl border border-white/10 bg-black/70 backdrop-blur-md px-4 py-2.5"
-            >
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-semibold text-white tracking-wide">Available for work</span>
-            </motion.div>
-          </div>
-        </motion.div>
+        {/* ── Two-column on md+, single column on mobile ── */}
+        <div className="flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-16 items-start md:items-center">
 
-        {/* ── Content ── */}
-        <motion.div
-          initial={{ opacity: 0, x: 48 }}
-          animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 48 }}
-          transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col gap-7"
-        >
-          {/* label + name */}
-          <div>
-            <p className="mb-3 text-[0.7rem] font-medium tracking-[0.35em] uppercase text-white/35">
-              About Me
-            </p>
-            <h2 className="mb-1 text-4xl sm:text-5xl font-bold leading-tight text-white">
-              Dino Raj
-            </h2>
-            <p className="text-sm text-white/40 tracking-wide">
-              B.Tech CSE &nbsp;·&nbsp; Chandigarh Engineering College (IKGPTU) &nbsp;·&nbsp; 2022 – 2026
-            </p>
-          </div>
-
-          {/* bio */}
-          <p className="leading-relaxed text-white/65 text-sm sm:text-base font-sans">
-            I'm a Full Stack Developer with hands-on experience shipping production-grade
-            applications across the MERN stack. I've interned at{" "}
-            <span className="text-white/90 font-medium">TCIL-IT</span> and worked as a Full Stack
-            Engineer at{" "}
-            <span className="text-white/90 font-medium">UnibluWeb</span>, where I led
-            cross-functional teams and delivered client projects end-to-end. Two-time internal{" "}
-            <span className="text-white/90 font-medium">Smart India Hackathon</span> winner — I
-            thrive where engineering meets real-world impact.
-          </p>
-
-          {/* stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {stats.map((s, i) => (
+          {/* ── Photo column ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full md:w-auto flex-shrink-0 flex justify-center md:justify-start"
+          >
+            <div className="relative">
+              {/* ambient glow */}
+              <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-white/10 via-white/5 to-transparent blur-xl" />
+              {/* photo frame */}
+              <div className="relative w-44 h-52 sm:w-60 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] rounded-2xl sm:rounded-[1.75rem] overflow-hidden border border-white/10 shadow-2xl mx-auto md:mx-0">
+                <Image
+                  src="/images/dino-profile.jpg"
+                  alt="Dino Raj"
+                  fill
+                  sizes="(max-width: 640px) 176px, (max-width: 768px) 240px, (max-width: 1024px) 256px, 288px"
+                  className="object-cover object-top"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </div>
+              {/* availability badge */}
               <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 16 }}
-                animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-                className="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-3 text-center hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 cursor-default"
+                initial={{ opacity: 0, y: 10 }}
+                animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 md:left-auto md:-right-4 md:translate-x-0 flex items-center gap-2 rounded-2xl border border-white/10 bg-black/70 backdrop-blur-md px-3 py-2 whitespace-nowrap"
               >
-                <p className="text-xl font-bold text-white">{s.value}</p>
-                <p className="mt-0.5 text-[0.6rem] font-medium tracking-widest uppercase text-white/35 group-hover:text-white/55 transition-colors">
-                  {s.label}
-                </p>
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+                <span className="text-[0.65rem] sm:text-xs font-semibold text-white tracking-wide">Available for work</span>
               </motion.div>
-            ))}
-          </div>
+            </div>
+          </motion.div>
 
-          {/* skill pills */}
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill, i) => (
-              <motion.span
-                key={skill}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={visible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.35, delay: 0.45 + i * 0.025 }}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/55 hover:text-white hover:border-white/25 hover:bg-white/[0.09] transition-all duration-200 cursor-default"
+          {/* ── Content column ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col gap-5 sm:gap-6 mt-6 md:mt-0 flex-1 min-w-0"
+          >
+            {/* label + name */}
+            <div>
+              <p className="mb-2 text-[0.65rem] font-medium tracking-[0.35em] uppercase text-white/35">
+                About Me
+              </p>
+              <h2 className="mb-1 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+                Dino Raj
+              </h2>
+              <p className="text-xs sm:text-sm text-white/40 tracking-wide leading-relaxed">
+                B.Tech CSE &nbsp;·&nbsp; Chandigarh Engineering College (IKGPTU) &nbsp;·&nbsp; 2022 – 2026
+              </p>
+            </div>
+
+            {/* bio */}
+            <p className="leading-relaxed text-white/65 text-sm font-sans">
+              I'm a Full Stack Developer with hands-on experience shipping production-grade
+              applications across the MERN stack. I've interned at{" "}
+              <span className="text-white/90 font-medium">TCIL-IT</span> and worked as a Full Stack
+              Engineer at{" "}
+              <span className="text-white/90 font-medium">UnibluWeb</span>, where I led
+              cross-functional teams and delivered client projects end-to-end. Two-time internal{" "}
+              <span className="text-white/90 font-medium">Smart India Hackathon</span> winner — I
+              thrive where engineering meets real-world impact.
+            </p>
+
+            {/* stats */}
+            <div className="grid grid-cols-4 gap-2 sm:gap-3">
+              {stats.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+                  transition={{ duration: 0.5, delay: 0.3 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                  className="group rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-2 sm:p-3 text-center hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 cursor-default"
+                >
+                  <p className="text-base sm:text-xl font-bold text-white">{s.value}</p>
+                  <p className="mt-0.5 text-[0.5rem] sm:text-[0.6rem] font-medium tracking-widest uppercase text-white/35 group-hover:text-white/55 transition-colors">
+                    {s.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* skill pills */}
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {skills.map((skill, i) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={visible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.35, delay: 0.45 + i * 0.025 }}
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 py-0.5 sm:py-1 text-[0.65rem] sm:text-xs text-white/55 hover:text-white hover:border-white/25 hover:bg-white/[0.09] transition-all duration-200 cursor-default"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-2 sm:gap-3 pt-1">
+              <a
+                href="mailto:raj245098@gmail.com"
+                className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-white/20 hover:border-white/30 transition-all duration-200"
               >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
+                Let's Connect →
+              </a>
+              <a
+                href="/resume.pdf"
+                download="Dino_Raj_Resume.pdf"
+                className="rounded-xl border border-white/10 bg-transparent px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white/55 hover:text-white hover:border-white/25 hover:bg-white/[0.05] transition-all duration-200"
+              >
+                Download Resume
+              </a>
+            </div>
+          </motion.div>
 
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-3 pt-1">
-            <a
-              href="mailto:raj245098@gmail.com"
-              className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-6 py-2.5 text-sm font-semibold text-white hover:bg-white/20 hover:border-white/30 transition-all duration-200"
-            >
-              Let's Connect →
-            </a>
-            <a
-              href="/resume.pdf"
-              download="Dino_Raj_Resume.pdf"
-              className="rounded-xl border border-white/10 bg-transparent px-6 py-2.5 text-sm font-medium text-white/55 hover:text-white hover:border-white/25 hover:bg-white/[0.05] transition-all duration-200"
-            >
-              Download Resume
-            </a>
-          </div>
-        </motion.div>
-
-      </div>
+        </div>
       </div>
     </section>
   );

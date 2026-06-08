@@ -177,13 +177,13 @@ const page = () => {
     },
   ];
   return (
-    <div>
+    <div className="overflow-x-hidden w-full">
       <div
         id="hero"
         className="relative flex items-center justify-center"
         style={{ height: "100svh", paddingTop: "3.5rem", paddingBottom: "3.5rem" }}
       >
-        <div className="relative z-0 w-full h-[40vh]">
+        <div className="relative z-0 w-full h-[40vh] overflow-hidden">
           <TextPressure
             text="Hello!"
             flex={true}
@@ -209,8 +209,8 @@ const page = () => {
       <div id="about-content" className="flex flex-col justify-center items-center w-full">
         <div className="w-full max-w-5xl px-4 text-center overflow-hidden">
           <BinaryReveal
-            phrases={["I'm Dino Raj !!", "Software Engineer & Full Stack Developer"]}
-            className="font-bold text-[clamp(1rem,3vw,2.75rem)]"
+            phrases={["I'm Dino Raj !!","Software Engineer","Full Stack Developer"]}
+            className="font-bold text-[clamp(1.1rem,4vw,2.75rem)]"
             charDelay={45}
             frameSpeed={55}
             resolveFrames={7}
