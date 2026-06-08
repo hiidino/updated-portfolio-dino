@@ -57,11 +57,11 @@ export default function AboutSection() {
               {/* photo frame */}
               <div className="relative w-44 h-52 sm:w-60 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] rounded-2xl sm:rounded-[1.75rem] overflow-hidden border border-white/10 shadow-2xl mx-auto md:mx-0">
                 <Image
-                  src="/images/dino-profile.jpg"
+                  src="/images/dino-profile-new.jpg"
                   alt="Dino Raj"
                   fill
                   sizes="(max-width: 640px) 176px, (max-width: 768px) 240px, (max-width: 1024px) 256px, 288px"
-                  className="object-cover object-top"
+                  className="object-cover object-center"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
