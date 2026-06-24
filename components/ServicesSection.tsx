@@ -127,8 +127,8 @@ export default function ServicesSection() {
           return (
             <div
               key={service.title}
-              className="group relative rounded-2xl border border-white/10 bg-white/[0.03] p-6
-                         transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.06]
+              className="group relative rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-md p-6
+                         transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.13]
                          cursor-default overflow-hidden"
               style={{
                 opacity: visible ? 1 : 0,

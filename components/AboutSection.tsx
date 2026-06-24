@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 
 const stats = [
-  { label: "CGPA",        value: "7.72" },
+  { label: "CGPA",        value: "8.02" },
   { label: "Projects",    value: "5+"   },
   { label: "Internships", value: "2"    },
   { label: "SIH Wins",    value: "2×"   },
@@ -57,7 +57,7 @@ export default function AboutSection() {
               {/* photo frame */}
               <div className="relative w-44 h-52 sm:w-60 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] rounded-2xl sm:rounded-[1.75rem] overflow-hidden border border-white/10 shadow-2xl mx-auto md:mx-0">
                 <Image
-                  src="/images/dino-profile-new.jpg"
+                  src="/images/dino-profile-new-1.jpg"
                   alt="Dino Raj"
                   fill
                   sizes="(max-width: 640px) 176px, (max-width: 768px) 240px, (max-width: 1024px) 256px, 288px"
