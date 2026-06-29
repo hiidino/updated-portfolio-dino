@@ -1,4 +1,5 @@
-"use client"
+// Component ported from https://codepen.io/JuanFuentes/full/rgXKGQ
+
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 
 interface TextPressureProps {
@@ -18,6 +19,10 @@ interface TextPressureProps {
   className?: string;
   minFontSize?: number;
   maxFontSize?: number;
+  minWeight?: number;
+  maxWeight?: number;
+  minWidth?: number;
+  maxWidth?: number;
 }
 
 const dist = (a: { x: number; y: number }, b: { x: number; y: number }) => {
@@ -32,7 +37,7 @@ const getAttr = (distance: number, maxDist: number, minVal: number, maxVal: numb
 };
 
 const debounce = (func: (...args: any[]) => void, delay: number) => {
-  let timeoutId: NodeJS.Timeout;
+  let timeoutId: ReturnType<typeof setTimeout>;
   return (...args: any[]) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
@@ -43,8 +48,8 @@ const debounce = (func: (...args: any[]) => void, delay: number) => {
 
 const TextPressure: React.FC<TextPressureProps> = ({
   text = 'Compressa',
-  fontFamily = 'Compressa VF',
-  fontUrl = 'https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2',
+  fontFamily = 'Roboto Flex',
+  fontUrl = 'https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap',
   width = true,
   weight = true,
   italic = true,
@@ -57,7 +62,11 @@ const TextPressure: React.FC<TextPressureProps> = ({
   strokeWidth = 2,
   className = '',
   minFontSize = 24,
-  maxFontSize = 220,
+  maxFontSize = Infinity,
+  minWeight = 400,
+  maxWeight = 750,
+  minWidth = 80,
+  maxWidth = 150,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -106,7 +115,8 @@ const TextPressure: React.FC<TextPressureProps> = ({
     const { width: containerW, height: containerH } = containerRef.current.getBoundingClientRect();
 
     let newFontSize = containerW / (chars.length / 2);
-    newFontSize = Math.min(Math.max(newFontSize, minFontSize), maxFontSize);
+    newFontSize = Math.max(newFontSize, minFontSize);
+    newFontSize = Math.min(newFontSize, maxFontSize);
 
     setFontSize(newFontSize);
     setScaleY(1);
@@ -122,7 +132,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
         setLineHeight(yRatio);
       }
     });
-  }, [chars.length, minFontSize, scale]);
+  }, [chars.length, minFontSize, maxFontSize, scale]);
 
   useEffect(() => {
     const debouncedSetSize = debounce(setSize, 100);
@@ -131,29 +141,73 @@ const TextPressure: React.FC<TextPressureProps> = ({
     return () => window.removeEventListener('resize', debouncedSetSize);
   }, [setSize]);
 
+  // Cached span offsets (relative to container) and container viewport rect
+  const spanOffsetsRef = useRef<{ x: number; y: number }[]>([]);
+  const containerRectRef = useRef({ left: 0, top: 0, width: 0 });
+
+  const updateContainerRect = useCallback(() => {
+    if (!containerRef.current) return;
+    const r = containerRef.current.getBoundingClientRect();
+    containerRectRef.current = { left: r.left, top: r.top, width: r.width };
+  }, []);
+
+  const cacheSpanOffsets = useCallback(() => {
+    if (!containerRef.current) return;
+    const cr = containerRef.current.getBoundingClientRect();
+    containerRectRef.current = { left: cr.left, top: cr.top, width: cr.width };
+    spanOffsetsRef.current = spansRef.current.map(span => {
+      if (!span) return { x: 0, y: 0 };
+      const r = span.getBoundingClientRect();
+      return { x: r.left + r.width / 2 - cr.left, y: r.top + r.height / 2 - cr.top };
+    });
+  }, []);
+
+  // Cache on mount + resize + scroll — never inside RAF
+  useEffect(() => {
+    const t = setTimeout(cacheSpanOffsets, 150);
+    window.addEventListener('resize', cacheSpanOffsets);
+    window.addEventListener('scroll', updateContainerRect, { passive: true });
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener('resize', cacheSpanOffsets);
+      window.removeEventListener('scroll', updateContainerRect);
+    };
+  }, [cacheSpanOffsets, updateContainerRect]);
+
   useEffect(() => {
     let rafId: number;
+    let prevMx = -9999, prevMy = -9999;
+
     const animate = () => {
       mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / 15;
       mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / 15;
 
-      if (titleRef.current) {
-        const titleRect = titleRef.current.getBoundingClientRect();
-        const maxDist = titleRect.width / 2;
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
 
-        spansRef.current.forEach(span => {
+      // Skip all work if the lerped cursor hasn't moved meaningfully
+      if (Math.abs(mx - prevMx) < 0.5 && Math.abs(my - prevMy) < 0.5) {
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+      prevMx = mx;
+      prevMy = my;
+
+      if (spanOffsetsRef.current.length > 0) {
+        // Zero DOM reads inside RAF — use cached rect
+        const { left, top, width: cw } = containerRectRef.current;
+        const maxDist = cw / 2;
+
+        spanOffsetsRef.current.forEach((offset, i) => {
+          const span = spansRef.current[i];
           if (!span) return;
 
-          const rect = span.getBoundingClientRect();
-          const charCenter = {
-            x: rect.x + rect.width / 2,
-            y: rect.y + rect.height / 2
-          };
+          const charCenter = { x: left + offset.x, y: top + offset.y };
+          const d = dist({ x: mx, y: my }, charCenter);
 
-          const d = dist(mouseRef.current, charCenter);
-
-          const wdth = width ? Math.floor(getAttr(d, maxDist, 100, 200)) : 100;
-          const wght = weight ? Math.floor(getAttr(d, maxDist, 100, 600)) : 200;
+          // Round to nearest 5/10 to reduce style mutation frequency
+          const wdth = width ? Math.round(getAttr(d, maxDist, minWidth, maxWidth) / 5) * 5 : 100;
+          const wght = weight ? Math.round(getAttr(d, maxDist, minWeight, maxWeight) / 10) * 10 : minWeight;
           const italVal = italic ? getAttr(d, maxDist, 0, 1).toFixed(2) : '0';
           const alphaVal = alpha ? getAttr(d, maxDist, 0, 1).toFixed(2) : '1';
 
@@ -173,16 +227,12 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
     animate();
     return () => cancelAnimationFrame(rafId);
-  }, [width, weight, italic, alpha]);
+  }, [width, weight, italic, alpha, minWeight, maxWeight, minWidth, maxWidth]);
 
   const styleElement = useMemo(() => {
     return (
       <style>{`
-        @font-face {
-          font-family: '${fontFamily}';
-          src: url('${fontUrl}');
-          font-style: normal;
-        }
+        @import url('${fontUrl}');
         .stroke span {
           position: relative;
           color: ${textColor};
@@ -202,7 +252,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
   }, [fontFamily, fontUrl, stroke, textColor, strokeColor, strokeWidth]);
 
   return (
-    <div ref={containerRef} className="relative w-full h-full overflow-visible bg-transparent">
+    <div ref={containerRef} className="relative w-full h-full overflow-hidden bg-transparent">
       {styleElement}
       <h1
         ref={titleRef}
@@ -216,7 +266,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
           transform: `scale(1, ${scaleY})`,
           transformOrigin: 'center top',
           margin: 0,
-          fontWeight: 100,
+          fontWeight: minWeight,
           color: stroke ? undefined : textColor
         }}
       >

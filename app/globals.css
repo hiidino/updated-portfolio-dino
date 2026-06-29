@@ -131,8 +131,7 @@
   * { cursor: none !important; }
 }
 
-/* Performance: GPU-hint fixed background */
-.fixed { will-change: transform; }
+/* Removed blanket will-change on .fixed — it created excess GPU layers for every fixed element */
 
 /* Reduce expensive backdrop-blur on mobile */
 @media (max-width: 767px) {
