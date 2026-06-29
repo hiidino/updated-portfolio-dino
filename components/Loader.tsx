@@ -11,9 +11,9 @@ export default function Loader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Animate progress bar
+    // Animate progress bar over 900ms
     let start: number | null = null;
-    const duration = 2000;
+    const duration = 900;
     const raf = (ts: number) => {
       if (!start) start = ts;
       const p = Math.min((ts - start) / duration, 1);
@@ -22,10 +22,10 @@ export default function Loader() {
     };
     requestAnimationFrame(raf);
 
-    // Phase timeline
-    const t1 = setTimeout(() => setPhase("hold"), 300);
-    const t2 = setTimeout(() => setPhase("exit"), 2200);
-    const t3 = setTimeout(() => setShow(false), 3000);
+    // Phase timeline — total ~1.5s
+    const t1 = setTimeout(() => setPhase("hold"), 200);
+    const t2 = setTimeout(() => setPhase("exit"), 1000);
+    const t3 = setTimeout(() => setShow(false), 1600);
 
     return () => {
       clearTimeout(t1);
@@ -43,7 +43,7 @@ export default function Loader() {
           key="loader"
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black overflow-hidden"
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
         >
           {/* Subtle radial glow */}
           <div className="absolute inset-0 pointer-events-none">
@@ -70,8 +70,8 @@ export default function Loader() {
                 initial={{ y: "110%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{
-                  duration: 0.65,
-                  delay: 0.05 + i * 0.055,
+                  duration: 0.45,
+                  delay: 0.03 + i * 0.04,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
@@ -94,7 +94,7 @@ export default function Loader() {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
+            transition={{ delay: 0.5, duration: 0.35, ease: "easeOut" }}
             style={{
               marginTop: "1rem",
               fontFamily: "var(--font-geist-mono), monospace",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import {
   IconBrandGithub,
@@ -13,7 +13,7 @@ import {
   IconNewSection,
   IconTerminal2,
 } from "@tabler/icons-react";
-import Beams from "@/components/ui/beams";
+import BeamsClient from "@/components/BeamsClient";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import Navbar from "@/components/Navbar"
 import CustomCursor from "@/components/CustomCursor";
@@ -72,6 +72,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const robotoFlex = Roboto_Flex({
+  variable: "--font-roboto-flex",
+  subsets: ["latin"],
+  axes: ["wdth", "opsz"], // wght is included by default in next/font variable fonts
+});
+
 export const metadata: Metadata = {
   title: "Dino Raj | Full Stack Developer",
   description: "Full Stack Developer specialising in the MERN stack — building fast, scalable, production-grade web applications.",
@@ -88,20 +94,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${robotoFlex.variable} antialiased`}
       >
         {/* <div style={{ width: "100vw", height: "100vh", position: "relative" }}> */}
         <div className="fixed inset-0 -z-10" aria-hidden="true">
-          <Beams
-            beamWidth={2}
-            beamHeight={15}
-            beamNumber={3}
-            lightColor="#ffffff"
-            speed={1.5}
-            noiseIntensity={1.2}
-            scale={0.2}
-            rotation={0}
-          />
+          <BeamsClient />
         </div>
         <Loader />
         <CustomCursor />

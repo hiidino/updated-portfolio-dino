@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import NextImage from "next/image";
 import { Button } from "@/components/ui/button";
 import { Timeline } from "@/components/ui/timeline";
 
@@ -16,6 +17,12 @@ const ProjectsCTA     = dynamic(() => import("@/components/ProjectsCTA"),     { 
 const DomeGallery    = dynamic(() => import("@/components/DomeGallery"),    { ssr: false });
 
 const page = () => {
+  const [showAntigravity, setShowAntigravity] = useState(false);
+  useEffect(() => {
+    // Defer Antigravity WebGL init until after critical paint
+    const t = setTimeout(() => setShowAntigravity(true), 800);
+    return () => clearTimeout(t);
+  }, []);
   // const containerRef = useRef(null);
   const items = [
     {
@@ -61,34 +68,16 @@ const page = () => {
             real world projects on cohort's private repositories.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <img
-              src="/images/dino_100xdevs.png"
-              alt="100xdevs certificate"
-              width={500}
-              height={500}
-              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="/images/dino-aws-co.png"
-              alt="aws certificate 1"
-              width={500}
-              height={500}
-              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="/images/dino-aws-cf.png"
-              alt="aws certificate 2"
-              width={500}
-              height={500}
-              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="/images/dino-aws-de.png"
-              alt="aws certificate 3"
-              width={500}
-              height={500}
-              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+            {[
+              { src: "/images/dino_100xdevs.png", alt: "100xdevs certificate" },
+              { src: "/images/dino-aws-co.png",   alt: "AWS certificate 1" },
+              { src: "/images/dino-aws-cf.png",   alt: "AWS certificate 2" },
+              { src: "/images/dino-aws-de.png",   alt: "AWS certificate 3" },
+            ].map(({ src, alt }) => (
+              <div key={src} className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+                <NextImage src={src} alt={alt} fill className="object-cover" loading="lazy" />
+              </div>
+            ))}
           </div>
         </div>
       ),
@@ -164,13 +153,9 @@ const page = () => {
           </p>
 
           <div className="grid grid-cols-2 gap-4">
-            <img
-              src="/images/dino-uniblu.png"
-              alt="uniblu certificate"
-              width={500}
-              height={500}
-              loading="lazy" className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+            <div className="relative h-20 md:h-44 lg:h-60 w-full rounded-lg overflow-hidden shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]">
+              <NextImage src="/images/dino-uniblu.png" alt="UnibluWeb certificate" fill className="object-cover" loading="lazy" />
+            </div>
           </div>
         </div>
       ),
@@ -184,18 +169,24 @@ const page = () => {
         style={{ minHeight: "100svh", paddingTop: "4rem", paddingBottom: "3.5rem" }}
       >
         {/* HELLO text */}
-        <div className="relative z-0 w-full h-[22vh] lg:h-[40vh] overflow-hidden flex-shrink-0">
+        <div className="relative z-0 w-full px-6 sm:px-10 lg:px-16 h-[20vh] sm:h-[24vh] md:h-[30vh] lg:h-[42vh] overflow-hidden flex-shrink-0">
           <TextPressure
-            text="Hello!"
+            text="Hello"
+            fontFamily="var(--font-roboto-flex), Roboto Flex, sans-serif"
+            fontUrl=""
             flex={true}
             alpha={false}
             stroke={false}
+            scale={false}
             width={true}
             weight={true}
             italic={true}
             textColor="#ffffff"
             strokeColor="#ff0000"
-            minFontSize={36}
+            minFontSize={24}
+            maxFontSize={160}
+            minWeight={300}
+            maxWeight={500}
           />
         </div>
 
@@ -257,7 +248,7 @@ const page = () => {
         <div className="text-white mt-16 max-w-6xl w-full px-8 text-center text-base">
           <div style={{ position: "relative", width: "100%", minHeight: "220px" }}>
             <div style={{ position: "absolute", inset: 0, zIndex: 20, pointerEvents: "none" }}>
-              <Antigravity count={50} magnetRadius={6} ringRadius={7} waveSpeed={0.4} waveAmplitude={1} particleSize={1.5} lerpSpeed={0.05} color={"#FFFFFF"} autoAnimate={true} particleVariance={1} />
+              {showAntigravity && <Antigravity count={50} magnetRadius={6} ringRadius={7} waveSpeed={0.4} waveAmplitude={1} particleSize={1.5} lerpSpeed={0.05} color={"#FFFFFF"} autoAnimate={true} particleVariance={1} />}
             </div>
             <div style={{ position: "relative", zIndex: 10, paddingTop: "1rem" }}>
               <p className="font-sans text-white/80 leading-relaxed tracking-wide">
