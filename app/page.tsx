@@ -130,7 +130,7 @@ const page = () => {
       content: (
         <div>
           <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
-            - Joined UnibluWeb as a Full Stack Engineer {"(06/2024 - 12/2024)"}
+            - Joined UnibluWeb as a Full Stack Engineer {"(06/2024 - 12/2025)"}
           </p>
           <p className="mb-3 text-xs font-normal text-neutral-800 md:text-sm">
             - Led end-to-end product development, defining technical strategies
