@@ -5,9 +5,9 @@ import { motion } from "motion/react";
 import Image from "next/image";
 
 const stats = [
-  { label: "CGPA",        value: "8.02" },
-  { label: "Projects",    value: "5+"   },
-  { label: "Internships", value: "2"    },
+  { label: "CGPA",        value: "7.56" },
+  { label: "Projects",    value: "10+"   },
+  { label: "Experience", value: "2+ YOE"    },
   { label: "SIH Wins",    value: "2×"   },
 ];
 
